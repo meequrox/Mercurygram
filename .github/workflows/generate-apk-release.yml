@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - 'Mercurygram'
+      - 'revert_noto_emojis'
     paths-ignore:
       - 'README.md'
 
