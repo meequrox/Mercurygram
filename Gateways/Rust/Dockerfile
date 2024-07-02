@@ -1,8 +1,5 @@
 FROM rust:latest AS builder
 
-RUN apt-get update \
-    && apt-get upgrade -y
-
 WORKDIR /p2p-gateway
 
 COPY Cargo.toml Cargo.lock ./
@@ -22,8 +19,8 @@ RUN touch src/main.rs \
 FROM debian:latest AS runner
 
 RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y libssl3
+    && apt-get install -y libssl3 \
+    && apt-get clean
 
 COPY --from=builder /p2p-gateway/target/release/p2p-gateway /p2p-gateway/
 

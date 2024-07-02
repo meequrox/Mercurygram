@@ -2,9 +2,13 @@ FROM python:latest
 
 WORKDIR /p2p-gateway
 
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y python3-starlette python3-httpx python3-uvloop python3-aiofiles uvicorn
+RUN apt-get update && apt-get install -y \
+    python3-aiofiles \
+    python3-httpx \
+    python3-starlette \
+    python3-uvloop \
+    uvicorn \
+    && apt-get clean
 
 COPY main.py ./
 
